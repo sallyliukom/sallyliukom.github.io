@@ -19,5 +19,17 @@ Our project utilized a dataset comprising medical claims data from customers, wh
 **Challenges with Sequence Dependency**: A significant limitation of our initial algorithm was its inability to capture the dependencies and sequences of medical events. For instance, consider the typical sequence of a patient's medical interactions: a doctor's visit is coded with an ICD code, followed by an MRI scan indicated by a CPT code. The doctor then reviews the MRI results and possibly prescribes physical therapy leading up to another consultation, where the decision about surgery is made.
 
 Our previous feature engineering approach, while effective in capturing data within specific time frames, failed to recognize the importance of the order and progression of these events. The sequence in which the events occurred — crucial for understanding patient treatment pathways — was not accounted for in the model. This oversight could potentially lead to suboptimal predictive performance, as the contextual relationship between sequential medical events is a critical factor in determining the necessity for surgery.
+
+### Transformer Model
+Our project requires an algorithm capable of capturing dependencies and sequences in medical event data, while also incorporating static features like age and gender, which are crucial for accurate predictions. Additionally, high interpretability is essential to understand how different factors contribute to the model's outcomes.
+
+Given these requirements, the Temporal Fusion Transformer (TFT) developed by Google AI in 2020 presents a compelling solution. Unlike traditional transformer models that excel in language tasks like translation and question answering through their use of the attention mechanism, TFT is specifically tailored for time-series forecasting.
+
+**Background on TFT**: The strength of TFT lies in its unique design that integrates the powerful attention mechanism to weigh the relevance of different events through time. This allows the model not only to focus on the most significant events in a sequence but also to effectively handle multiple time-dependent sequences alongside static information. By doing so, TFT can discern patterns and dependencies that are crucial for forecasting outcomes in complex scenarios such as the progression of medical treatments.
+
+TFT’s architecture enables it to capture the temporal sequence of medical events, such as the order of doctor’s visits, diagnostic tests, and subsequent treatments, which our previous models failed to account for adequately. The ability to integrate static patient data (like demographic information) enhances the model’s predictive accuracy, making it a robust choice for healthcare analytics where understanding the full context of a patient's history is key.
+
+### Pesudo Code
+
 ### Future Work
 
